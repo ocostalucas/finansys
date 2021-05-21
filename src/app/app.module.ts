@@ -8,6 +8,7 @@ import { InMemoryDatabase } from './in-memory-database';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { EntriesModule } from './pages/entries/entries.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
+    EntriesModule
 
   ],
   providers: [],
