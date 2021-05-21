@@ -21,8 +21,6 @@ import { EntriesModule } from './pages/entries/entries.module';
     HttpClientModule,
     ToastrModule.forRoot(),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
-    EntriesModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
