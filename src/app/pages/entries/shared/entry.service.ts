@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { flatMap  } from 'rxjs/operators';
+import { flatMap } from 'rxjs/operators';
 
 import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
 import { CategoryService } from '../../categories/shared/category.service';
@@ -14,7 +14,7 @@ export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector, private categoryService: CategoryService,
   ) {
-    super("api/entries", injector);
+    super("api/entries", injector, Entry.fromJson);
   }
 
 
@@ -42,15 +42,4 @@ export class EntryService extends BaseResourceService<Entry> {
     )
   }
 
-
-  //Private methods
-  protected jsonDataToResources(jsonData: any[]): Entry[] {
-    const entries: Entry[] = [];
-    jsonData.forEach(element => entries.push(Object.assign(new Entry(), element)));
-    return entries;
-  }
-
-  protected jsonDataToResource(jsonData: any): Entry {
-    return jsonData as Entry;
-  }
 }
