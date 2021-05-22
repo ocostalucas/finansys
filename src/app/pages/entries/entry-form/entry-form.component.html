@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb mb-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a> </li>
-        <li class="breadcrumb-item"><a [routerLink]="['/entries']">Categorias</a> </li>
+        <li class="breadcrumb-item"><a [routerLink]="['/entries']">Lançamentos</a> </li>
         <li class="breadcrumb-item active"><a>{{pageTitle}}</a> </li>
     </ol>
 </nav>
@@ -74,7 +74,7 @@
             </div>
             <div class="form-row">
                 <!-- paid -->
-                <div class="form-group col-md-2 mr-md-3">
+                <div class="form-group col-md-2">
                     <label for="paid">Pago</label>
                     <div class="btn-group">
                         <label (click)="entryForm.get('paid').setValue(true)"
@@ -98,7 +98,6 @@
                     <label for="categoryId">Tipo</label>
                     <select type="categoryId" id='categoryId' class="form-control" formControlName="categoryId">
                         <option *ngFor="let category of categories"  [value]=category.id>{{category.name}}</option>
-                        <option value=2>Categoria 2</option>
                     </select>
                     <div class="text-danger form-text"
                         *ngIf="entryForm.get('categoryId').invalid && entryForm.get('categoryId').touched">

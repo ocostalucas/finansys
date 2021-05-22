@@ -51,7 +51,7 @@ export class EntryFormComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    protected categoryService: CategoryService,
+    private categoryService: CategoryService,
 
   ) { }
 
