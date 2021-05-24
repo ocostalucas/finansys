@@ -17,7 +17,7 @@
 </div>
 
 
-<form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+<form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
     <div class="card">
         <div class="card-header">
             Informações sobre a categoria
@@ -26,27 +26,29 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">Nome</label>
-                    <input type="name" class="form-control" id="name" formControlName="name" >
-                    <div class="text-danger form-text" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
-                        <small *ngIf="categoryForm.get('name').errors.required">Dado obrigatório</small>
-                        <small *ngIf="categoryForm.get('name').errors.minlength">Deve ter no mínimo 2 caracteres</small>
+                    <input type="name" class="form-control" id="name" formControlName="name">
+                    <div class="text-danger form-text"
+                        *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched">
+                        <small *ngIf="resourceForm.get('name').errors.required">Dado obrigatório</small>
+                        <small *ngIf="resourceForm.get('name').errors.minlength">Deve ter no mínimo 2 caracteres</small>
                     </div>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="description">Decrição</label>
-                    <input type="description" class="form-control" id="description"  formControlName="description">
-                    
+                    <input type="description" class="form-control" id="description" formControlName="description">
+
                 </div>
             </div>
         </div>
     </div>
     <div class="alert alert-danger mt-4" role="alert" *ngIf="serverErrorMessages">
         <strong>Erro no servidor:</strong>
-    
-        <ul >
+
+        <ul>
             <li *ngFor="let error of serverErrorMessages">{{error}}</li>
         </ul>
     </div>
-    <button  type="submit" class="btn btn-primary btn-lg float-right mt-3" [disabled] ="submittingForm || categoryForm.invalid">Salvar</button>
+    <button type="submit" class="btn btn-primary btn-lg float-right mt-3"
+        [disabled]="submittingForm || resourceForm.invalid">Salvar</button>
 
 </form>
