@@ -20,15 +20,13 @@ button-class='btn-light'
                 <div class="form-group col-md-4">
                     <label for="name">Nome</label>
                     <input type="name" class="form-control" id="name" formControlName="name">
-                    <div class="text-danger form-text"
-                        *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched">
-                        <small *ngIf="resourceForm.get('name').errors.required">Dado obrigatório</small>
-                        <small *ngIf="resourceForm.get('name').errors.minlength">Deve ter no mínimo 2 caracteres</small>
-                    </div>
+                    <app-form-field-error [form-control]="resourceForm.get('name')"></app-form-field-error>
+
                 </div>
                 <div class="form-group col-md-8">
                     <label for="description">Decrição</label>
                     <input type="description" class="form-control" id="description" formControlName="description">
+                    <app-form-field-error [form-control]="resourceForm.get('description')"></app-form-field-error>
 
                 </div>
             </div>
