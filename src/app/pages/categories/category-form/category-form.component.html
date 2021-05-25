@@ -32,13 +32,7 @@ button-class='btn-light'
             </div>
         </div>
     </div>
-    <div class="alert alert-danger mt-4" role="alert" *ngIf="serverErrorMessages">
-        <strong>Erro no servidor:</strong>
-
-        <ul>
-            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-        </ul>
-    </div>
+    <app-server-error-messages [server-error-messages]='serverErrorMessages'></app-server-error-messages>
     <button type="submit" class="btn btn-primary btn-lg float-right mt-3"
         [disabled]="submittingForm || resourceForm.invalid">Salvar</button>
 
