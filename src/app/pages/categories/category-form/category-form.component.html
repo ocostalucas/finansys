@@ -1,23 +1,16 @@
-<nav aria-label="breadcrumb mb-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a> </li>
-        <li class="breadcrumb-item"><a [routerLink]="['/categories']">Categorias</a> </li>
-        <li class="breadcrumb-item active"><a>{{pageTitle}}</a> </li>
-    </ol>
-</nav>
+<app-bread-crumb [items]="[{'text': 'Categorias', 'link': '/categories'}, {'text': pageTitle}]"
+></app-bread-crumb>
 
-<div class="row">
-    <div class="col-md-9 mb-4">
-        <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
-    </div>
-    <div class="col-md-3">
-        <a routerLink="/categories" class="btn btn-light float-right">
-            << Voltar</a>
-    </div>
-</div>
+<app-page-header
+[page-title]="pageTitle" 
+button-text="<< Voltar"
+button-link= '/categories'
+button-class='btn-light'
+></app-page-header>
 
 
-<form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+
+<form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
     <div class="card">
         <div class="card-header">
             Informações sobre a categoria
@@ -26,27 +19,21 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="name">Nome</label>
-                    <input type="name" class="form-control" id="name" formControlName="name" >
-                    <div class="text-danger form-text" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
-                        <small *ngIf="categoryForm.get('name').errors.required">Dado obrigatório</small>
-                        <small *ngIf="categoryForm.get('name').errors.minlength">Deve ter no mínimo 2 caracteres</small>
-                    </div>
+                    <input type="name" class="form-control" id="name" formControlName="name">
+                    <app-form-field-error [form-control]="resourceForm.get('name')"></app-form-field-error>
+
                 </div>
                 <div class="form-group col-md-8">
                     <label for="description">Decrição</label>
-                    <input type="description" class="form-control" id="description"  formControlName="description">
-                    
+                    <input type="description" class="form-control" id="description" formControlName="description">
+                    <app-form-field-error [form-control]="resourceForm.get('description')"></app-form-field-error>
+
                 </div>
             </div>
         </div>
     </div>
-    <div class="alert alert-danger mt-4" role="alert" *ngIf="serverErrorMessages">
-        <strong>Erro no servidor:</strong>
-    
-        <ul >
-            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-        </ul>
-    </div>
-    <button  type="submit" class="btn btn-primary btn-lg float-right mt-3" [disabled] ="submittingForm || categoryForm.invalid">Salvar</button>
+    <app-server-error-messages [server-error-messages]='serverErrorMessages'></app-server-error-messages>
+    <button type="submit" class="btn btn-primary btn-lg float-right mt-3"
+        [disabled]="submittingForm || resourceForm.invalid">Salvar</button>
 
 </form>

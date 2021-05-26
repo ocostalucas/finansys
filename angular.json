@@ -41,6 +41,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "currency-formatter",
+              "chart.js"        
+            ],
             "outputPath": "dist/finansys",
             "index": "src/index.html",
             "main": "src/main.ts",
